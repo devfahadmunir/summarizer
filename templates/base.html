@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  {% load static %}
+
+  <meta charset="utf-8">
+  <title>Text Summarizer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="keywords" content="footer, address, phone, icons" />
+  
+
+  <!-- Favicons -->
+  <link href="{% static 'assets/images/favicon.png'%}" rel="icon">
+
+  <!-- sttylesheet   -->
+  <link rel="stylesheet" href="{% static 'assets/css/style.css'%}">
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script> <!-- yaha pa yaki ha-->
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+  <!-- stylesheets -->
+ 
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <link href="http://fonts.googleapis.com/css?family=Cookie" rel="stylesheet" type="text/css">
+
+<!--ya down sa up lya ha -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://kit.fontawesome.com/a076d05399.js"></script> <!--yaha pa yaki ha-->
+ 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script> 
+
+
+
+
+
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-sm navbar sticky-top     justify-content-between">
+
+    <div class="logo">
+      <font color="white">Abridge</font>
+    </div>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+
+      <i id="bars" class="fas fa-bars"></i>
+
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        {% if user.is_authenticated %}
+         <li class="nav-item active">
+          <a class="nav-link active" href="/index">Main <span class="sr-only">(current)</span></a>
+        </li>
+       {% else %}
+        <li class="nav-item active">
+          <a class="nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
+        </li>
+        {% endif %}
+        <li class="nav-item">
+          <a class="nav-link" href="/services">Services</a>
+
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/howitwork">How does it works?</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/premium">Premium</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/team">Team</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/contact">Contact</a>
+        </li>
+        {% if user.is_authenticated %}
+                <li class="nav-item"> 
+
+  <div class="collapse navbar-collapse" id="navbar-list-4"> <!-- Start of dropdown-->
+    <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <img src="/media/{{profile_pic.profile_pic}}" alt="" width="40" height="40" class="rounded-circle">
+        {{ request.user }}</a>
+
+        
+        {% for d in data %} {{ d.profile_pic}}
+        
+        <img src="/media/{{d.profile_pic}}" />
+        <img src="{{ d.profile_pic.url }}" />
+        {% endfor %}
+
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="/dashboard">Dashboard</a>
+          <a class="dropdown-item" href="/userlogout">Log Out</a>
+        </div>
+      </li>
+        
+         {% else %}
+          <li class="nav-item">
+          <a class="nav-link" href="/userlogin">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/registration">Sign-Up</a>
+        </li>
+    <!--    <li class="nav-item">
+          <a class="nav-link" href="" data-toggle="modal" data-target="#loginModal">quick</a>
+        </li>
+-->
+        {% endif %}
+       
+        
+      
+    </ul>
+  </div> <!-- end of dropdown-->
+          </a>
+        </li>
+      </ul>
+    </div> 
+  </nav>
+  {% for message in messages  %}            
+  <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        <strong>Message : </strong> {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+  {% endfor %}
+ 
+
+  <!-- login Modal -->
+ <!--    
+  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="loginModalLabel">Welcome to Login</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+         
+         <form action="userlogin/" method="POST">
+         {% csrf_token %}
+  <div class="form-group">
+    <label for="loginusername">Email address</label>
+    <input type="text"  id="loginusername" name="loginusername"  class="form-control" required>
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+  <div class="form-group">
+    <label for="loginpassword">Password</label>
+    <input type="password" class="form-control" name="loginpassword" id="loginpassword" placeholder="Password">
+  </div>
+  <div class="form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+  </div>
+  <button type="submit" class="btn btn-primary">Login</button>
+</form>
+
+        </div>
+        <div class="modal-footer">
+         <form>
+         {% csrf_token %}
+  <div class="form-group">
+    <label for="exampleInputEmail1">Forget Password</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+    <small id="emailHelp" class="form-text text-muted">Please check your email</small>
+  </div>
+  <button type="submit" class="btn btn-danger">Reset</button>
+</form>
+        </div>
+      </div>
+    </div>
+  </div>   -->
+
+  {% block body %}
+
+  {% endblock %}
+
+  {% block js %}
+
+  <script src="{% static 'assets/js/main.js'%}"></script>
+  <script src="{% static 'assets/js/file.js'%}"></script>
+
+
+
+
+
+  {% endblock %}
+
+
+</body>
+
+
+
+<!-- ======= Footer ======= -->
+<footer id="footer">
+  <div class="container">
+    <h3>Abridge</h3>
+    <p>A Project made with &#10084;</p>
+    <div class="social-links">
+      <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="facebook"><i class="fab fa-facebook"></i></a>
+      <a href="#" class="instagram"><i class="fab fa-instagram"></i></a>
+      <a href="#" class="google-plus"><i class="fab fa-skype"></i></a>
+      <a href="#" class="linkedin"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <div class="copyright">
+      &copy; Copyright <strong><span>Abridge</span></strong>. All Rights Reserved
+    </div>
+    <div class="credits">
+
+      Designed by <a href="" style="color: #ef6603;">FYP Mates</a>
+    </div>
+  </div>
+</footer><!-- End Footer -->
+
+
+</html>

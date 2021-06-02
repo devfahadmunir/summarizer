@@ -1,0 +1,213 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<style>
+    .file {
+        visibility: hidden;
+        position: absolute;
+      }
+</style>
+
+{% endblock %}
+
+<body>
+{% block body %}
+
+<div class="row " style="width: 101.1%">
+  <br>
+  
+
+   <div class="col-sm-12 " style="background-color: #C6CAE5; height: 400%;" >
+  <br>
+  
+  <h5 class="h1-responsive   my-4" style="font-size:28px;text-align: center;">Create a<font style="color:#ef6603 "> PREMIUM</font> account.</h5>
+
+  <br>
+
+
+   </div>
+
+<!-- </div> -->
+
+
+</div>
+
+
+
+<div class="container ">
+  
+
+ <div class="row mt-5">
+
+                <div class="col-sm-3 " style="background-color: white">
+                  </div>
+
+                <div class="col-sm-6 " style="background-color: white;height:20%;border: 2px solid #ef6603;">
+
+ <form id="reg-form" name="reg-form" action="" method="POST">
+
+  {% csrf_token %}
+
+  <div class="row">
+   <!--images-->
+   <div class="col-sm-6" >
+    <div class="ml-2 col-sm-6">
+        <div id="msg"></div>
+          <input type="file" name="img[]" class="file" accept="image/*">
+          <div class="input-group my-3">
+            <div class="input-group-append">   
+            </div>
+          </div>   
+      </div>
+      <div class="ml-2 col-sm-6">
+        <img src="https://placehold.it/80x80" id="preview" class="img-thumbnail">
+      </div>
+
+</div>
+<!--images end-->
+      <!--Grid column-->
+      <div class="col-md-6">
+          <div class="md-form mb-0">
+                    
+<h5 class="h1-responsive font-weight-bold  my-4" style=" font-size: 16px; ">First Name<font color="red">  *</font> </h5>
+
+                      <input type="text"  id="fname" name="fname"  class="form-control" required>
+                  </div>
+              </div>
+
+              <div class="col-md-6">
+                  <div class="md-form mb-0">
+                  
+<h5 class="h1-responsive font-weight-bold  my-4" style=" font-size: 16px; ">Last Name<font color="red">  *</font> </h5>
+
+                      <input type="text"  id="lname" name="lname"  class="form-control" required>
+                  </div>
+              </div>
+            
+          </div>
+
+<div class="row">
+
+              <!--Grid column-->
+              <div class="col-md-6">
+                  <div class="md-form mb-0">
+                  
+<h5 class="h1-responsive font-weight-bold  my-4" style=" font-size: 16px; ">username<font color="red">  *</font> </h5>
+
+                      <input type="text"  id="username" name="username"  class="form-control">
+                  </div>
+              </div>
+
+                <div class="col-md-6">
+                    <div class="md-form mb-0">
+                    
+<h5 class="h1-responsive font-weight-bold  my-4" style=" font-size: 16px; ">Gender<font color="red">  *</font> </h5>
+
+                        <div class="p-t-10">
+                            <input type="radio" name="gender" value="male"> Male<br>
+                            <input type="radio" name="gender" value="female"> Female<br>
+                            <input type="radio" name="gender" value="other"> Other
+                                </div>
+                    </div>
+                </div>
+              
+            </div>
+
+
+
+
+<div class="row">
+
+                <!--Grid column-->
+                <div class="col-md-6">
+                    <div class="md-form mb-0">
+                    
+<h5 class="h1-responsive font-weight-bold  my-4" style=" font-size: 16px; ">Email<font color="red">  *</font> </h5>
+
+                        <input type="text"  id="email" name="email"  class="form-control" required>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="md-form mb-0">
+                    
+<h5 class="h1-responsive font-weight-bold  my-4" style=" font-size: 16px; ">Phone Number<font color="red">  *</font> </h5>
+
+                        <input type="text"  id="phone" name="phone"  class="form-control">
+                    </div>
+                </div>
+              
+            </div>
+
+
+
+<div class="row">
+
+                <!--Grid column-->
+                <div class="col-md-6">
+                    <div class="md-form mb-0">
+                    
+<h5 class="h1-responsive font-weight-bold  my-4" style=" font-size: 16px; ">Password<font color="red">  *</font> </h5>
+
+                        <input type="text"  id="password" name="password"  class="form-control" required>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="md-form mb-0">
+                    
+<h5 class="h1-responsive font-weight-bold  my-4" style=" font-size: 16px; ">Confirm Password<font color="red">  *</font> </h5>
+
+                        <input type="text"  id="cpassword" name="cpassword"  class="form-control" required>
+                    </div>
+                </div>
+              
+            </div>
+
+
+<div class="text-center ">
+<br>
+<br>
+          <button  type="submit" class="btn-upload" style="color: white;background-color:#2F334D ;text-align: center;margin-left: 0%;cursor: pointer;">Create Account</button>
+    </div>
+              </form>
+<br>
+              </div>
+
+
+            <div class="col-sm-3 " style="background-color: white">
+              </div>
+
+
+
+
+
+              </div>
+            </div>
+
+
+                {% endblock %}
+</body>
+
+{% block js %}
+<script>
+    $(document).on("click", ".browse", function() {
+        var file = $(this).parents().find(".file");
+        file.trigger("click");
+      });
+      $('input[type="file"]').change(function(e) {
+        var fileName = e.target.files[0].name;
+        $("#file").val(fileName);
+      
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          // get loaded data and render thumbnail.
+          document.getElementById("preview").src = e.target.result;
+        };
+        // read the image file as a data URL.
+        reader.readAsDataURL(this.files[0]);
+      });
+
+</script>
+  {% endblock %}

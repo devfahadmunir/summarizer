@@ -1,0 +1,165 @@
+{% extends 'base.html' %}
+
+<body>
+    {% block body %}
+
+
+
+
+
+    <!-- <div class="container "> -->
+    <div class="row " style="width: 101.1%">
+        <br>
+
+
+        <div class="col-sm-12 " style="background-color: #C6CAE5; height: 400%;">
+            <br>
+
+            <h5 class="h1-responsive   my-4" style="font-size:35px;text-align: center;">Login to Abridge</h5>
+
+            <br>
+
+
+        </div>
+
+        <!-- </div> -->
+
+
+    </div>
+    <div class="container ">
+
+
+        <div class="row mt-5">
+
+            <div class="col-sm-5 " style="background-color: white">
+
+
+                <h5 class="h1-responsive   my-4" style="font-size:35px">My Account</h5>
+
+                <!-- <h6 class="font-awesome h1-responsive   my-4" style="font-size: 12px;">REGISTERED STUDENTS</h6> -->
+                <hr style="background-color: #fd9042;width: 20%;margin-left: 0%;height: 2px;margin-top:-10px">
+
+
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <!--Grid row-->
+                    <div class="row">
+
+                        <!--Grid column-->
+                        <div class="col-md-8">
+                            <div class="md-form mb-0">
+
+                                <h5 class="h1-responsive font-weight-bold  my-4" style=" font-size: 16px; ">Username<font
+                                        color="red"> *</font>
+                                </h5>
+
+                                <input type="text"  id="loginusername" name="loginusername"  class="form-control" required>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+
+
+                    <div class="row">
+
+                        <!--Grid column-->
+                        <div class="col-md-8">
+                            <div class="md-form mb-0">
+
+
+                                <h5 class="h1-responsive font-weight-bold  my-4" style=" font-size: 16px; ">Password
+                                    <font color="red"> *</font>
+                                </h5>
+
+                                <input type="password" class="form-control" name="loginpassword" id="loginpassword" placeholder="Password">
+                            </div>
+                        </div>
+
+                    </div>
+                    <!--Grid row-->
+
+
+
+
+                    <!-- <a href="" id="forgotpass">Forgot Your Password?</a> -->
+
+
+                    <div class="text-center text-md-left">
+                    <br>
+                    <button type="submit" class="btn-upload"style="color: white;background-color:#2F334D ;text-align: center;margin-left: 0%;cursor: pointer;">Login</button>
+                    <a class="btn-upload" href="/registration/"style="color: white;background-color:#2F334D ;text-align: center;margin-left: 0%;cursor: pointer;">Createan account</a>
+
+                </form>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="col-sm-1"></div>
+
+
+        <div class="col-sm-6 " style="background-color: white">
+
+
+            <!-- <h5 class="h1-responsive font-weight-bold  my-4">Let us know what you think.</h5> -->
+
+            <h5 class="h1-responsive   my-4" style="font-size:35px">Forgot Password</h5>
+
+            <!-- <h6 class="font-awesome h1-responsive   my-4" style="font-size: 12px;">REGISTERED STUDENTS</h6> -->
+            <hr style="background-color: #fd9042;width: 20%;margin-left: 0%;height: 2px;margin-top:-10px">
+
+            <form id="forgot-form" name="forgot-form" action="" method="POST">
+                {% csrf_token %}
+                <!--Grid row-->
+                <div class="row">
+
+                    <!--Grid column-->
+                    <div class="col-md-8">
+                        <div class="md-form mb-0">
+
+                            <h5 class="h1-responsive font-weight-bold  my-4" style=" font-size: 16px; ">Email<font
+                                    color="red"> *</font>
+                            </h5>
+
+                            <input type="text" id="email" name="email" class="form-control">
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+
+                <div class="text-center text-md-left">
+                    <br>
+                    <a class="btn-upload" href="#output"
+                        style="color: white;background-color:#2F334D ;text-align: center;margin-left: 0%;cursor: pointer;">Reset
+                        Password</a>
+
+
+
+                </div>
+            </form>
+
+        </div>
+
+    </div>
+
+    </div>
+
+  
+
+
+   
+  
+
+    {% endblock %}
+
+
+
+</body>

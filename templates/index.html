@@ -1,0 +1,636 @@
+{% extends 'base.html' %}
+
+<body>
+  {% load static %} {% block body %}
+
+  <div class="col-lg-12 offset-lg-0 pt-5 pb-5" id="hero">
+    <div
+      id="client-testimonial-carousel"
+      class="carousel slide"
+      data-ride="carousel"
+    >
+      <div class="carousel-inner" role="listbox">
+        <div class="carousel-item active">
+          <div class="carousel-container">
+            <h2 class="ml3">Welcome to Abridge</h2>
+            <p class="">
+              To help you summarize and analyze your argumentative texts, your
+              articles, your scientific texts,<br />
+              your history texts as well as your well-structured analyses work
+              of art.
+            </p>
+            <a
+              href="#Summarizer"
+              class="
+                btn-get-started
+                animate__animated animate__fadeInUp
+                scrollto
+              "
+              >Get Started</a
+            >
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="carousel-container">
+            <h2 class="ml1">
+              <span class="text-wrapper">
+                <span class="line line1"></span>
+                <span class="letters">Abridge</span>
+                <span class="line line2"></span>
+              </span>
+            </h2>
+            <p class="">
+              Provides you with a "Summary text tool" : an educational tool that
+              identifies and summarizes<br />
+              the important ideas and facts of your documents.
+            </p>
+            <a
+              href="#Summarizer"
+              class="
+                btn-get-started
+                animate__animated animate__fadeInUp
+                scrollto
+              "
+              >Get Started</a
+            >
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="carousel-container">
+            <h2 class="ml1">
+              <span class="text-wrapper">
+                <span class="line line1"></span>
+                <span class="letters">Abridge</span>
+                <span class="line line2"></span>
+              </span>
+            </h2>
+            <p class="">
+              Summarize in 1-Click, go to the main idea or skim through so that
+              you can then interpret your<br />
+              texts quickly and develop your syntheses.
+            </p>
+            <a
+              href="#Summarizer"
+              class="
+                btn-get-started
+                animate__animated animate__fadeInUp
+                scrollto
+              "
+              >Get Started</a
+            >
+          </div>
+        </div>
+      </div>
+      <ol class="carousel-indicators">
+        <a
+          class="carousel-control-prev"
+          data-target="#client-testimonial-carousel"
+          data-slide="prev"
+        >
+          <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a
+          class="carousel-control-next"
+          data-target="#client-testimonial-carousel"
+          data-slide="next"
+        >
+          <span class="carousel-control-next-icon"></span>
+        </a>
+      </ol>
+    </div>
+  </div>
+
+  <section id="Summarizer" class="Summarizer">
+    <div class="container">
+      <div class="section-title">
+        <h2>Summarizer</h2>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-2 text-center"></div>
+
+        <div
+          class="col-lg-8 text-left"
+          style="
+            border-radius: 25px;
+            border: 3px solid #ef6603;
+            width: 400%;
+            background: linear-gradient(0deg, #2a2c39 0%, #33364a 100%);
+          "
+        >
+          <form action="/summe/" method="POST">
+            {% csrf_token %}
+            <br />
+            <div class="form-group shadow-textarea">
+              <textarea
+                style="margin-top: 3%"
+                class="form-control z-depth-1"
+                id="summary"
+                name="summary"
+                rows="12"
+                placeholder="Copy and Paste here your text..."
+              >
+{{ ptext }}</textarea
+              >
+            </div>
+            <!---url wala-->
+            <label style="color: white" for="basic-url">Your vanity URL </label>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon3"
+                  >https://example.com</span
+                >
+              </div>
+              <input
+                type="text"
+                class="form-control"
+                id="surl"
+                name="surl"
+                aria-describedby="basic-addon3"
+              />
+            </div>
+            <!---url wala-->
+          
+
+
+            <div class="text-center">
+              
+              <button
+                href="output"
+                type="submit"
+                class="btn-upload"
+                id=""
+                style="
+                  color: white;
+                  text-align: center;
+                  cursor: pointer;
+                  background: linear-gradient(0deg, #2a2c39 0%, #33364a 100%);
+                "
+              >
+                Summary
+              </button>
+              <!-- <br /><br /> -->
+            </div>
+          </form>
+
+
+
+
+
+<!---
+  
+        
+          <form method="post" action="/okok/" enctype="multipart/form-data">
+            {% csrf_token %}
+           
+            <label style="color: white" class="form-label" for="customFile"
+              >Choose an PDF/image file </label
+            >
+            <input type="file" class="form-control" id="myfile" name="myfile" />
+
+            <div class="text-center">
+            <button
+              href="output"
+              type="submit"
+              class="btn-upload"
+              id=""
+              style="
+                color: white;
+                text-align: center;
+                cursor: pointer;
+                background: linear-gradient(0deg, #2a2c39 0%, #33364a 100%);
+              "
+            >
+              Extract
+            </button>
+
+          </div>
+            
+           
+          </form>
+         
+  
+-->
+        
+
+          <br />
+        </div>
+
+        <div class="col-lg-2"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="output" class="Output">
+    <div class="container">
+      <div class="section-title">
+        <h2>Output</h2>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-2 text-center"></div>
+
+        <div
+          class="col-lg-8 text-left"
+          style="
+            border-radius: 25px;
+            border: 3px solid #ef6603;
+            width: 400%;
+            background: linear-gradient(0deg, #2a2c39 0%, #33364a 100%);
+          "
+        >
+          <form method="POST" action="/savedata/" enctype="multipart/form-data">
+            {% csrf_token %}
+            <br />
+            <div class="row">
+              <!--Grid column-->
+              <div class="col-md-8">
+                <div class="md-form mb-0">
+                  <h5
+                    class="h1-responsive font-weight-bold my-4"
+                    style="font-size: 16px; color: white"
+                  >
+                    Work Title<font color="orange"> *</font>
+                  </h5>
+
+                  <input
+                    type="text"
+                    id="work_title"
+                    name="work_title"
+                    class="form-control"
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+
+
+            <div class="form-group shadow-textarea">
+              <textarea
+                style="margin-top: 3%"
+                class="form-control z-depth-1"
+                id="output-of-text"
+                name="output-of-text"
+                rows="12"
+              >
+               {{ sumo }}
+              </textarea>
+              <br />
+              <br />
+
+              <a
+                class="btn-upload"
+                href="#output"
+                onclick="myFunction()"
+                id=""
+                style="
+                  color: white;
+                  text-align: center;
+                  margin-left: 10%;
+                  cursor: pointer;
+                "
+                >Copy to Clipboard</a
+              >
+
+              <a
+                class="btn-upload"
+                href="/print"              
+                id=""
+                style="
+                    color: white;
+                  text-align: center;
+                  margin-left: 1%;
+                  cursor: pointer;
+                
+                "
+                >Download PDF</a
+              >
+
+              <a
+                href="/audio"
+                class="btn-upload"
+                id=""
+                style="
+                  color: white;
+                  text-align: center;
+                  margin-left: 1%;
+                  cursor: pointer;
+                "
+                >Audio</a
+              >
+
+              <!-- <div class="text-center" >
+
+              <button type="submit" >
+
+                <a
+                  type="submit"
+                  class="btn-upload"
+                  onclick="myFunction()"
+                  id=""
+                  style="
+                    color: white;
+                    text-align: center;
+                    cursor: pointer;
+                    background: linear-gradient(0deg, #2a2c39 0%, #33364a 100%);
+                  "
+                  >Save</a
+                >
+              </button>
+
+            </div> -->
+
+
+
+            <div class="text-center">
+              <button
+                  type="submit"
+                  class="btn-upload"
+                  id=""
+                  style="
+                    color: white;
+                    text-align: center;
+                    cursor: pointer;
+                    background: linear-gradient(0deg, #2a2c39 0%, #33364a 100%);
+                  "
+                  >Save Work</button>
+              <br />
+            </div>
+
+
+          </form>
+
+          <br />
+        </div>
+
+        <div class="col-lg-2"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= Services Section ======= -->
+  <section id="services" class="services">
+    <div class="container">
+      <div class="section-title" data-aos="zoom-out">
+        <h2>Services</h2>
+        <p>What we do offer</p>
+      </div>
+
+      <div class="row" style="cursor: pointer">
+        <div class="col-lg-4 col-md-6">
+          <div class="icon-box" data-aos="zoom-in-left">
+            <div class="icon">
+              <i class="fas fa-user-graduate" style="color: #1f618d"></i>
+            </div>
+            <h4 class="title"><a>STUDENTS</a></h4>
+            <p class="description">
+              With Abridge, summarize your Wikipedia pages in a matter of
+              seconds for your productivity.
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mt-5 mt-md-0">
+          <div class="icon-box" data-aos="zoom-in-left" data-aos-delay="100">
+            <div class="icon">
+              <i class="fas fa-user-tie" style="color: #c0392b"></i>
+            </div>
+            <h4 class="title"><a>PROFESSORS</a></h4>
+            <p class="description">
+              Identify the most important ideas and arguments of your texts so
+              that you can prepare your lessons.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mt-5 mt-lg-0">
+          <div class="icon-box" data-aos="zoom-in-left" data-aos-delay="200">
+            <div class="icon">
+              <i class="fas fa-book" style="color: #3fcdc7"></i>
+            </div>
+            <h4 class="title"><a> LIBRARIES</a></h4>
+            <p class="description">
+              Need to summarize your books' presentations ? Identify the
+              arguments in a matter of seconds.
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mt-5">
+          <div class="icon-box" data-aos="zoom-in-left" data-aos-delay="300">
+            <div class="icon">
+              <i class="fas fa-book-reader" style="color: #8e44ad"></i>
+            </div>
+            <h4 class="title"><a>READERS</a></h4>
+            <p class="description">
+              Save time, summarize your digital documents for a relevant and
+              fast uptake of information.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mt-5">
+          <div class="icon-box" data-aos="zoom-in-left" data-aos-delay="400">
+            <div class="icon">
+              <i class="fas fa-feather-alt" style="color: #d6ff22"></i>
+            </div>
+            <h4 class="title"><a> WRITERS</a></h4>
+            <p class="description">
+              Need to summarize your chapters ? With Abridge, go to the heart of
+              your ideas.
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mt-5">
+          <div class="icon-box" data-aos="zoom-in-left" data-aos-delay="500">
+            <div class="icon">
+              <i class="fas fa-upload" style="color: #4680ff"></i>
+            </div>
+            <h4 class="title"><a>PUBLISHERS</a></h4>
+            <p class="description">
+              Identify your books' or your authors' ideas quickly. Summarize the
+              most important main points.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Services Section -->
+
+  <!-- ======= How does it works Section ======= -->
+  <section id="how-it-work" class="how-it-work">
+    <div class="container">
+      <div class="section-title" data-aos="zoom-out">
+        <h2>How does it works</h2>
+      </div>
+
+      <div class="row content" data-aos="fade-up">
+        <div class="col-lg-6">
+          <p>
+            You can summarize or analyze your argumentative texts anytime you
+            want :
+          </p>
+          <ul>
+            <li>
+              <i class="fas fa-check-double"></i> By copying and pasting them in
+              text area.
+            </li>
+            <li>
+              <i class="fas fa-check-double"></i> Or by copying and pasting your
+              article's URL.
+            </li>
+            <li>
+              <i class="fas fa-check-double"></i> Or by uploading the file.
+            </li>
+          </ul>
+        </div>
+        <div class="col-lg-6 pt-4 pt-lg-0">
+          <img
+            src="{% static 'assets/images/confused (3).png'%}"
+            style="margin-left: 30%"
+            alt=""
+            class="img-fluid"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End How does it works  Section -->
+
+  <!-- ======= Cta Section ======= -->
+  <section id="cta" class="cta">
+    <div class="container">
+      <div class="row" data-aos="zoom-out">
+        <div class="col-lg-9 text-center text-lg-left">
+          <h3>BECOME PREMIUM</h3>
+          <p>
+            Import your texts up to 200 000 characters. Finish the copy-paste!
+            Drag your PDF, DOCX and TXT files on the site to save even more
+            time. Paste URLs of targeted website.
+          </p>
+        </div>
+        <div class="col-lg-3 cta-btn-container text-center">
+          <a
+            class="cta-btn align-middle"
+            href="premium/"
+            style="cursor: pointer"
+            >Discover</a
+          >
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Cta Section -->
+
+  <!-- ======= Team Section ======= -->
+  <section id="team" class="team">
+    <div class="container">
+      <div class="section-title" data-aos="zoom-out">
+        <h2>Team</h2>
+        <p>Our Hardworking Team</p>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+          <div class="member">
+            <div class="member-img">
+              <img
+                src="{% static 'assets/images/haseeb.jpg'%}"
+                class="img-fluid"
+                alt=""
+              />
+              <div class="social">
+                <a href=""><i class="fab fa-twitter"></i></a>
+                <a href=""><i class="fab fa-facebook"></i></a>
+                <a href=""><i class="fab fa-instagram"></i></a>
+                <a href=""><i class="fab fa-linkedin"></i></a>
+              </div>
+            </div>
+            <div class="member-info">
+              <h4>Abdul Haseeb</h4>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+          <div class="member" data-aos="fade-up" data-aos-delay="100">
+            <div class="member-img">
+              <img
+                src="{% static 'assets/images/basit.jpg'%}"
+                class="img-fluid"
+                alt=""
+              />
+              <div class="social">
+                <a href=""><i class="fab fa-twitter"></i></a>
+                <a href=""><i class="fab fa-facebook"></i></a>
+                <a href=""><i class="fab fa-instagram"></i></a>
+                <a href=""><i class="fab fa-linkedin"></i></a>
+              </div>
+            </div>
+            <div class="member-info">
+              <h4>Abdul Basit</h4>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+          <div class="member" data-aos="fade-up" data-aos-delay="200">
+            <div class="member-img">
+              <img
+                src="{% static 'assets/images/fahad.jpg'%}"
+                class="img-fluid"
+                alt=""
+              />
+              <div class="social">
+                <a href=""><i class="fab fa-twitter"></i></a>
+                <a href=""><i class="fab fa-facebook"></i></a>
+                <a href=""><i class="fab fa-instagram"></i></a>
+                <a href=""><i class="fab fa-linkedin"></i></a>
+              </div>
+            </div>
+            <div class="member-info">
+              <h4>Fahad Munir</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Team Section -->
+
+  <!-- Google Adsense Section -->
+  <div id="SC_TBlock_833261"></div>
+
+  <script type="text/javascript">
+    (sc_adv_out = window.sc_adv_out || []).push({
+      id: 833261,
+      domain: "n.ads5-adnow.com",
+    });
+  </script>
+  <script
+    type="text/javascript"
+    src="//st-n.ads5-adnow.com/js/a.js"
+    async
+  ></script>
+
+  <!-- end Google Adsense Section -->
+
+  <button onclick="topFunction()" id="myBtn" title="Go to top">
+    <a class="gotopbtn" href="#">
+      <i class="fas fa-arrow-up" style="color: white"></i>
+    </a>
+  </button>
+
+  <script>
+
+    
+    function myFunction() {
+    var copyText = document.getElementById("output-of-text");
+    copyText.select();
+    copyText.setSelectionRange(0, 99999)
+    document.execCommand("copy");
+    alert("Text Copied");
+  }
+    </script>
+
+  {% endblock %} {% block js %} {% endblock %}
+</body>

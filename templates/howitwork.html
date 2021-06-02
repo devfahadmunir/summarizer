@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+
+<body>
+  {% load static %}
+    {% block body %}
+
+  <!-- ======= How does it works Section ======= -->
+  <section id="how-it-work" class="how-it-work">
+    <div class="container">
+
+      <div class="section-title" data-aos="zoom-out">
+        <h2>How does it works </h2>
+
+      </div>
+
+      <div class="row content" data-aos="fade-up">
+        <div class="col-lg-6">
+          <p>
+
+
+            You can summarize or analyze your argumentative texts anytime you want :
+          </p>
+          <ul>
+            <li><i class="fas fa-check-double"></i> By copying and pasting them in text area.</li>
+            <li><i class="fas fa-check-double"></i> Or by copying and pasting your article's URL.</li>
+            <li><i class="fas fa-check-double"></i> Or by uploading the file.</li>
+          </ul>
+        </div>
+        <div class="col-lg-6 pt-4 pt-lg-0">
+          <img src="{% static 'assets/images/confused (3).png'%}" style="margin-left: 30%" alt="" class="img-fluid">
+
+
+
+        </div>
+      </div>
+
+    </div>
+  </section><!-- End How does it works  Section -->
+
+  {% endblock %}
+</body>

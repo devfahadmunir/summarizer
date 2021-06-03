@@ -36,7 +36,7 @@ DEBUG = True
 # EMAIL_USE_SSL = True
 
 #'1277.0.0.1', 'sampledomain.com'
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['1277.0.0.1', 'academictools.herokuapp.com']
 
 
 # Application definition
